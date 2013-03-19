@@ -1,10 +1,11 @@
-# Chefworking schema
+# chefworking schema
 
 # --- !Ups
 
+DROP SCHEMA IF EXISTS chefworking;
 CREATE SCHEMA `chefworking` DEFAULT CHARACTER SET utf8 ;
 
 
 # --- !Downs
 
-DROP chefworking;
+DROP SCHEMA chefworking;
