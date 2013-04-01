@@ -5,5 +5,26 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+# Profile pages
+GET     /profile                    controllers.Application.profile
+POST    /profile                    controllers.Application.editProfile
+
+# Job History pages
+GET     /jobHistories               controllers.Application.jobHistories
+POST    /jobHistories               controllers.Application.newJobHistory
+POST    /jobHistories/:id/delete    controllers.Application.deleteJobHistory(id: Long)
+
+# Job Posting pages
+GET     /jobPostings                controllers.Application.jobPostings
+POST    /jobPostings                controllers.Application.newJobPosting
+POST    /jobPostings/:id/delete     controllers.Application.deleteJobPosting(id: Long)
+
+# Restaurant pages
+GET     /restaurants                controllers.Application.restaurants
+
+# Referral pages
+POST    /referrals                  controllers.Application.askForReferral
+POST    /referrals                  controllers.Application.provideReferral
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
