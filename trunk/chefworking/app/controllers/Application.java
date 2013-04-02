@@ -25,9 +25,16 @@ public class Application extends Controller {
     }
 
     public static Result newUser() {
-        return TODO;
+        Form<User> filledForm = userForm.bindFromRequest();
+        if(filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.index.render(User.all(), filledForm)
+            );
+        } else {
+            User.create(filledForm.get());
+            return redirect(routes.Application.users());
+        }
     }
-
     public static Result editUser() {
         return TODO;
     }
