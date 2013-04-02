@@ -1,7 +1,43 @@
-@(message: String)
+@(users: List[User], userForm: Form[User])
 
-@main("Welcome to Play 2.1") {
-    
-    @play20.welcome(message, style = "Java")
-    
+@import helper._
+
+@main("Todo list") {
+
+<h1>@users.size() user(s)</h1>
+
+<ul>
+    @for(user <- users) {
+    <li>
+        @user.email
+        @user.firstName
+        @user.lastName
+        @user.phone
+        @user.city
+        @user.postalCode
+        @user.countryCode
+
+        @form(routes.Application.deleteUser(user.id)) {
+        <input type="submit" value="Delete">
+        }
+    </li>
+    }
+</ul>
+
+<h2>Add a new user</h2>
+
+@form(routes.Application.newUser()) {
+
+    @inputText(userForm("email"))
+    @inputText(userForm("firstName"))
+    @inputText(userForm("lastName"))
+    @inputText(userForm("phone"))
+    @inputText(userForm("city"))
+    @inputText(userForm("postalCode"))
+    @inputText(userForm("countryCode"))
+
+    <input type="submit" value="Create">
+
+    }
+
 }

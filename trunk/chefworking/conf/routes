@@ -6,8 +6,10 @@
 GET     /                           controllers.Application.index()
 
 # Profile pages
-GET     /profile                    controllers.Application.profile
-POST    /profile                    controllers.Application.editProfile
+GET     /users                      controllers.Application.users()
+POST    /users                      controllers.Application.newUser()
+POST    /users                      controllers.Application.editUser()
+POST    /users/:id/delete           controllers.Application.deleteUser(id: Long)
 
 # Job History pages
 GET     /jobHistories               controllers.Application.jobHistories

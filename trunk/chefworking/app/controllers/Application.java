@@ -1,20 +1,38 @@
 package controllers;
 
+import models.User;
+import play.data.Form;
 import play.mvc.*;
 
 import scala.Long;
 
 public class Application extends Controller {
-  
+
+    static Form<User> userForm = Form.form(User.class);
+
     public static Result index() {
-        return ok("Hello world!");
+        return redirect(routes.Application.users());
     }
 
-    public static Result profile() {
+    public static Result users() {
+        return ok(
+                views.html.index.render(User.all(), userForm)
+        );
+    }
+
+    public static Result user() {
         return TODO;
     }
 
-    public static Result editProfile() {
+    public static Result newUser() {
+        return TODO;
+    }
+
+    public static Result editUser() {
+        return TODO;
+    }
+
+    public static Result deleteUser(Long id) {
         return TODO;
     }
 
