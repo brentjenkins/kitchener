@@ -5,11 +5,17 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-# Profile pages
+# Signup pages
+GET     /signup                     controllers.SignUp.blank()
+POST    /signup                     controllers.SignUp.submit()
+
+# User pages
 GET     /users                      controllers.Application.users()
-POST    /users                      controllers.Application.newUser()
-POST    /users                      controllers.Application.editUser()
 POST    /users/:id/delete           controllers.Application.deleteUser(id: Long)
+
+# Restaurant pages
+GET     /restaurants                controllers.Application.restaurants
+POST    /restaurants                controllers.Application.newRestaurant()
 
 # Job History pages
 GET     /jobHistories               controllers.Application.jobHistories
@@ -18,11 +24,9 @@ POST    /jobHistories/:id/delete    controllers.Application.deleteJobHistory(id:
 
 # Job Posting pages
 GET     /jobPostings                controllers.Application.jobPostings
+GET     /jobPostings/:id/get        controllers.Application.jobPosting(id: Long)
 POST    /jobPostings                controllers.Application.newJobPosting
 POST    /jobPostings/:id/delete     controllers.Application.deleteJobPosting(id: Long)
-
-# Restaurant pages
-GET     /restaurants                controllers.Application.restaurants
 
 # Referral pages
 POST    /referrals                  controllers.Application.askForReferral

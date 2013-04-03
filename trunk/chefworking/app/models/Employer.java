@@ -10,32 +10,29 @@ import javax.persistence.Table;
 import java.util.*;
 
 @Entity
-@Table(name="USER")
-public class User extends Model {
+@Table(name="EMPLOYER")
+public class Employer extends Model {
 
     @Id
     @Column(name="ID")
     public Long id;
 
     @Required
-    @Email
-    @Column(name="EMAIL")
-    public String email;
+    @Column(name="NAME")
+    public String name;
 
     @Required
-    @MinLength(value = 6)
-    public String password;
+    @Column(name="INDUSTRY_ID")
+    public String industryId;
 
-    @Required
-    @Column(name="FIRSTNAME")
-    public String firstName;
-
-    @Required
-    @Column(name="LASTNAME")
-    public String lastName;
+    @Column(name="WEBSITE")
+    public String website;
 
     @Column(name="PHONE")
     public String phone;
+
+    @Column(name="ADDRESS")
+    public String address;
 
     @Column(name="CITY")
     public String city;
@@ -51,16 +48,20 @@ public class User extends Model {
     @Column(name="COUNTRYCODE")
     public String countryCode;
 
-    public static Finder<Long,User> find = new Finder(
-            Long.class, User.class
+    @Required
+    @Column(name="CATEGORY")
+    public String category;
+
+    public static Finder<Long,Employer> find = new Finder(
+            Long.class, Employer.class
     );
 
-    public static List<User> all() {
+    public static List<Employer> all() {
         return find.all();
     }
 
-    public static void create(User user) {
-        user.save();
+    public static void create(Employer employer) {
+        employer.save();
     }
 
     public static void delete(Long id) {

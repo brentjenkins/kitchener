@@ -1,0 +1,110 @@
+@(signupForm: Form[User])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap/bootstrap.min.css")" />
+
+@title = {
+    Sign Up
+}
+
+<div class="container">
+
+        @main("signup") {
+
+            @helper.form(action = routes.SignUp.submit) {
+
+            <fieldset>
+                <legend>Your profile information</legend>
+
+                @inputText(
+                signupForm("email"),
+                '_label -> "Email",
+                '_help -> "Enter a valid email address."
+                )
+
+                @inputPassword(
+                signupForm("password"),
+                '_label -> "Password",
+                '_help -> "A password must be at least 6 characters. "
+                )
+
+                @inputPassword(
+                signupForm("repeatPassword"),
+                '_label -> "Repeat password",
+                '_help -> "Please repeat your password again.",
+                '_error -> signupForm.error("password")
+                )
+
+                @inputText(signupForm("firstName"),
+                '_label -> "First Name",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("lastName"),
+                '_label -> "Last Name",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("phone"),
+                '_label -> "Phone (###) ###-####",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("city"),
+                '_label -> "City",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("stateCode"),
+                '_label -> "State",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("postalCode"),
+                '_label -> "Postal Code",
+                '_error -> signupForm.globalError
+                )
+
+                @inputText(signupForm("countryCode"),
+                '_label -> "Country",
+                '_error -> signupForm.globalError
+                )
+
+            </fieldset>
+
+            <fieldset>
+
+                @checkbox(
+                signupForm("accept"),
+                '_label -> None, '_text -> "You agree the Terms and conditions",
+                '_showConstraints -> false
+                )
+
+            </fieldset>
+
+            <div class="actions">
+                <input type="submit" class="btn primary" value="Sign Up">
+                <a href="@routes.Application.index" class="btn">Cancel</a>
+            </div>
+
+            }
+        }
+
+</div>
+
+<script src="@routes.Assets.at("javascripts/bootstrap-affix.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-alert.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-button.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-carousel.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-collapse.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-dropdown.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-modal.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-popover.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-scrollspy.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-tab.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-tooltip.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-transition.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap-typeahead.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.min.js")"></script>

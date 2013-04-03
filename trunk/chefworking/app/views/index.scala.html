@@ -1,62 +1,19 @@
-@(users: List[User], userForm: Form[User])
+@main("Chefworking") {
 
-@import helper._
+<h2>Sign up form</h2>
 
-@main("Todo list") {
+<p>
+    Sign up to chefworking!
+</p>
 
-<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap/bootstrap.min.css")" />
+<p>
+    <a class="btn" href="@routes.SignUp.blank">Sign up »</a>
+</p>
 
+<h2>Sign in page</h2>
 
-<h1>@users.size() user(s)</h1>
-
-<ul>
-    @for(user <- users) {
-    <li>
-        @user.email
-        @user.firstName
-        @user.lastName
-        @user.phone
-        @user.city
-        @user.stateCode
-        @user.postalCode
-        @user.countryCode
-
-        @form(routes.Application.deleteUser(user.id)) {
-        <input type="submit" value="Delete">
-        }
-    </li>
-    }
-</ul>
-
-<h2>Add a new user</h2>
-
-@form(routes.Application.newUser()) {
-
-    @inputText(userForm("email"))
-    @inputText(userForm("firstName"))
-    @inputText(userForm("lastName"))
-    @inputText(userForm("phone"))
-    @inputText(userForm("city"))
-    @inputText(userForm("stateCode"))
-    @inputText(userForm("postalCode"))
-    @inputText(userForm("countryCode"))
-
-    <input type="submit" value="Create">
-
-    }
+<p>
+    Sign in to chefworking!
+</p>
 
 }
-<script src="@routes.Assets.at("javascripts/bootstrap-affix.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-alert.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-button.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-carousel.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-collapse.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-dropdown.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-modal.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-popover.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-scrollspy.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-tab.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-tooltip.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-transition.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/bootstrap-typeahead.min.js")"></script>
-<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.min.js")"></script>
