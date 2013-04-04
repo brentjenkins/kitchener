@@ -1,3 +1,4 @@
+
 @(signupForm: Form[User])
 
 @import helper._
@@ -6,87 +7,91 @@
     Sign Up
 }
 
-<div class="container">
-
         @main("signup") {
 
             @helper.form(action = routes.SignUp.submit) {
 
-            <fieldset>
-                <legend>Your profile information</legend>
+            <div class="row">
+                <div class="large-8 columns">
 
-                @inputText(
-                signupForm("email"),
-                '_label -> "Email",
-                '_help -> "Enter a valid email address."
-                )
+                    <fieldset>
+                        <legend>Your profile information</legend>
 
-                @inputPassword(
-                signupForm("password"),
-                '_label -> "Password",
-                '_help -> "A password must be at least 6 characters. "
-                )
+                        @inputText(
+                        signupForm("email"),
+                        '_label -> "Email"
+                        )
 
-                @inputPassword(
-                signupForm("repeatPassword"),
-                '_label -> "Repeat password",
-                '_help -> "Please repeat your password again.",
-                '_error -> signupForm.error("password")
-                )
+                        @inputPassword(
+                        signupForm("password"),
+                        '_label -> "Password"
+                        )
 
-                @inputText(signupForm("firstName"),
-                '_label -> "First Name",
-                '_error -> signupForm.globalError
-                )
+                        @inputPassword(
+                        signupForm("repeatPassword"),
+                        '_label -> "Repeat password",
+                        '_help -> "Please repeat your password again.",
+                        '_error -> signupForm.error("password")
+                        )
 
-                @inputText(signupForm("lastName"),
-                '_label -> "Last Name",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("firstName"),
+                        '_label -> "First Name",
+                        '_error -> signupForm.globalError
+                        )
 
-                @inputText(signupForm("phone"),
-                '_label -> "Phone (###) ###-####",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("lastName"),
+                        '_label -> "Last Name",
+                        '_error -> signupForm.globalError
+                        )
 
-                @inputText(signupForm("city"),
-                '_label -> "City",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("phone"),
+                        '_label -> "Phone (###) ###-####",
+                        '_error -> signupForm.globalError
+                        )
 
-                @inputText(signupForm("stateCode"),
-                '_label -> "State",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("city"),
+                        '_label -> "City",
+                        '_error -> signupForm.globalError
+                        )
 
-                @inputText(signupForm("postalCode"),
-                '_label -> "Postal Code",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("stateCode"),
+                        '_label -> "State",
+                        '_error -> signupForm.globalError
+                        )
 
-                @inputText(signupForm("countryCode"),
-                '_label -> "Country",
-                '_error -> signupForm.globalError
-                )
+                        @inputText(signupForm("postalCode"),
+                        '_label -> "Postal Code",
+                        '_error -> signupForm.globalError
+                        )
 
-            </fieldset>
+                        @inputText(signupForm("countryCode"),
+                        '_label -> "Country",
+                        '_error -> signupForm.globalError
+                        )
 
-            <fieldset>
+                    </fieldset>
 
-                @checkbox(
-                signupForm("accept"),
-                '_label -> None, '_text -> "You agree the Terms and conditions",
-                '_showConstraints -> false
-                )
+                    <fieldset>
 
-            </fieldset>
+                        @checkbox(
+                        signupForm("accept"),
+                        '_label -> None, '_text -> "You agree the Terms and conditions",
+                        '_showConstraints -> false
+                        )
 
-            <div class="actions">
-                <input type="submit" class="btn primary" value="Sign Up">
-                <a href="@routes.Application.index" class="btn">Cancel</a>
+                        <div>
+                            <input type="submit" class="small button" value="Sign Up">
+                            <a href="@routes.Application.index" class="small button">Cancel</a>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+                <div class="large-4 columns">
+                    <h4>Getting Started</h4>
+                    <p>We're stoked you want to try Chefworking! To find or post a kitchen job, fill in the signup form and we'll go from there.</p>
+                </div>
             </div>
-
             }
         }
 
-</div>
