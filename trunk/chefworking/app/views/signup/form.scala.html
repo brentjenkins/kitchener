@@ -37,8 +37,7 @@
                         )
 
                         @select(signupForm("countryCode"),
-                        options = options(Country.list),
-                        '_default -> "US",
+                        options = options(("US", "United States of America"), ("CA", "Canada")),
                         '_label -> "Country",
                         '_showConstraints -> false
                         )

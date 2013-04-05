@@ -35,10 +35,8 @@ public class Country extends Model {
 
     public static List<String> list() {
         List<String> codes = new ArrayList<String>();
-        for (Country country : all())
-        {
-            codes.add(country.countryCode);
-        }
+        codes.add("US");
+        codes.add("CA");
         return codes;
     }
 
