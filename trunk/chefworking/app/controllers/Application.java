@@ -1,7 +1,6 @@
 package controllers;
 
 import models.Employer;
-import models.User;
 import play.data.Form;
 import play.mvc.*;
 

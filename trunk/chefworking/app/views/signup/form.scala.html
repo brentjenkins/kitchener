@@ -1,4 +1,3 @@
-
 @(signupForm: Form[User])
 
 @import helper._
@@ -18,33 +17,35 @@
                         <legend>Your profile information</legend>
 
                         @inputText(signupForm("email"),
-                            '_label -> "Email",
-                            '_showConstraints -> false
+                        '_label -> "Email",
+                        '_showConstraints -> false
                         )
 
                         @inputText(signupForm("password"),
-                            '_label -> "Password",
-                            '_showConstraints -> false
+                        '_label -> "Password",
+                        '_showConstraints -> false
                         )
 
                         @inputText(signupForm("firstName"),
-                            '_label -> "First Name",
-                            '_showConstraints -> false
+                        '_label -> "First Name",
+                        '_showConstraints -> false
                         )
 
                         @inputText(signupForm("lastName"),
-                            '_label -> "Last Name",
-                            '_showConstraints -> false
+                        '_label -> "Last Name",
+                        '_showConstraints -> false
                         )
 
-                        @inputText(signupForm("countryCode"),
+                        @select(signupForm("countryCode"),
+                        options = options(Country.list),
+                        '_default -> "US",
                         '_label -> "Country",
                         '_showConstraints -> false
                         )
 
                         @inputText(signupForm("postalCode"),
-                            '_label -> "Postal Code",
-                            '_showConstraints -> false
+                        '_label -> "Postal Code",
+                        '_showConstraints -> false
                         )
 
                     </fieldset>
