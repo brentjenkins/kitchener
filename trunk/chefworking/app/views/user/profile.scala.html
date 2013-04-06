@@ -1,0 +1,51 @@
+@(user: User)
+
+@main("user") {
+
+<div class="row">
+    <div class="large-12 columns">
+        <ul class="breadcrumbs">
+            <li><a href="userdashboard">Home</a></li>
+            <li class="current"><a href="#">User Profile</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-8 columns">
+
+        <fieldset>
+            <legend>User Profile</legend>
+
+            <ul class="vcard">
+                <li class="fn">@user.firstName @user.lastName</li>
+                <li class="locality">@user.city</li>
+                <li><span class="state">@user.stateCode</span>, <span class="zip">@user.postalCode</span></li>
+                <li class="email"><a href="#">@user.email</a></li>
+            </ul>
+
+            <ul class="list">
+                TODO: implement a list of previous jobs
+            </ul>
+
+            <div>
+                <input type="submit" class="small button" value="Add a Job ">
+                <input type="submit" class="small button" value="Edit your Profile ">
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="large-4 columns">
+        <h6>Your Profile</h6>
+        <div class="progress large-6 success round"><span class="meter" style="width: 40%"></span></div>
+        <ul class="side-nav">
+            <li><a href="/userprofile">Add a job</a></li>
+            <li><i>Search job postings</i></li>
+            <li><i>View your restaurant profile</i></li>
+            <li><i>Apply to represent your restaurant</i></li>
+            <li><i>Invite your colleagues</i></li>
+        </ul>
+    </div>
+</div>
+
+}

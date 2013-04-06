@@ -51,9 +51,7 @@ public class User extends Model {
     @Column(name="COUNTRYCODE")
     public String countryCode;
 
-    public static Finder<Long,User> find = new Finder(
-            Long.class, User.class
-    );
+    public static Model.Finder<String,User> find = new Model.Finder(String.class, User.class);
 
     public static List<User> all() {
         return find.all();
@@ -63,8 +61,19 @@ public class User extends Model {
         user.save();
     }
 
-    public static void delete(Long id) {
-        find.ref(id).delete();
+    public static User findByEmail(String email) {
+        return find.where().eq("email", email).findUnique();
+    }
+
+    /**
+     * Authenticate a User.
+     * TODO: use an md5 hash of the password
+     */
+    public static User authenticate(String email, String password) {
+        return find.where()
+                .eq("email", email)
+                .eq("password", password)
+                .findUnique();
     }
 
 }

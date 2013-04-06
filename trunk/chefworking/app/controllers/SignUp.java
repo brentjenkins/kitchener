@@ -5,6 +5,7 @@ import play.data.*;
 import static play.data.Form.*;
 
 import views.html.signup.*;
+import views.html.user.*;
 
 import models.*;
 
@@ -37,7 +38,7 @@ public class SignUp extends Controller {
             return badRequest(form.render(filledForm));
         } else {
             User created = filledForm.get();
-            return ok(summary.render(created));
+            return ok(profile.render(created));
         }
     }
 

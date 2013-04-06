@@ -1,73 +1,61 @@
 package controllers;
 
-import models.Employer;
-import play.data.Form;
+import play.*;
 import play.mvc.*;
+import play.data.*;
+import static play.data.Form.*;
 
-import scala.Long;
+import models.*;
+import views.html.*;
 
 public class Application extends Controller {
 
-    static Form<Employer> employerForm = Form.form(Employer.class);
+    // -- Authentication
 
-    public static Result index() {
-        return redirect(routes.Application.users());
+    public static class Login {
+
+        public String email;
+        public String password;
+
     }
 
-    public static Result users() {
-        return TODO;
+    /**
+     * Login page.
+     */
+    public static Result login() {
+        return ok(
+                login.render(form(Login.class))
+        );
     }
 
-    public static Result user() {
-        return TODO;
+    /**
+     * Handle login form submission.
+     */
+    public static Result authenticate() {
+        Form<Login> loginForm = form(Login.class).bindFromRequest();
+        boolean authenticationError = false;
+        if(User.authenticate(loginForm.data().get("email"), loginForm.data().get("password")) == null) {
+            authenticationError = true;
+        }
+        if(authenticationError || loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session("email", loginForm.get().email);
+            return redirect(
+                    routes.UserDashboard.index()
+            );
+        }
     }
 
-    public static Result deleteUser(Long id) {
-        return TODO;
-    }
-
-    public static Result restaurants() {
-        return TODO;
-    }
-
-    public static Result newRestaurant() {
-        return TODO;
-    }
-
-    public static Result jobHistories() {
-        return TODO;
-    }
-
-    public static Result newJobHistory() {
-        return TODO;
-    }
-
-    public static Result deleteJobHistory(Long id) {
-        return TODO;
-    }
-
-    public static Result jobPostings() {
-        return TODO;
-    }
-
-    public static Result jobPosting(Long id) {
-        return TODO;
-    }
-
-    public static Result newJobPosting() {
-        return TODO;
-    }
-
-    public static Result deleteJobPosting(Long id) {
-        return TODO;
-    }
-
-    public static Result askForReferral() {
-        return TODO;
-    }
-
-    public static Result provideReferral() {
-        return TODO;
+    /**
+     * Logout and clean the session.
+     */
+    public static Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+                routes.Application.login()
+        );
     }
 
 }
