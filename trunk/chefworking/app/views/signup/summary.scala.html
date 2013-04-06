@@ -2,30 +2,49 @@
 
 @main("Profile created!") {
 
-<h2>Your profile:</h2>
+<div class="row">
+        <div class="large-4 columns">
+            <h2>Your profile:</h2>
 
-<h6>Email</h6>
+            <h6>Email</h6>
 
-<p>
-    @user.email
-</p>
+            <p>
+                @user.email
+            </p>
 
-<h6>City</h6>
+            <h6>City</h6>
 
-<p>
-    @user.city
-</p>
+            <p>
+                @user.city
+            </p>
 
-<h6>State</h6>
+            <h6>State</h6>
 
-<p>
-    @user.stateCode
-</p>
+            <p>
+                @user.postalCode
+            </p>
 
-<h6>Country</h6>
+            <h6>Country</h6>
 
-<p>
-    @user.countryCode
-</p>
+            <p>
+                @user.countryCode
+            </p>
+        </div>
+        <div class="large-4 columns">
+
+        </div>
+        <div class="large-4 columns">
+            <h4>Welcome to Chefworking!</h4>
+            <p>
+                <ul class="side-nav">
+                    <li><a href="/restaurant">Set up your restaurant profile</a></li>
+                    <li><a href="/jobs">Search job postings</a></li>
+                    <li><a href="/profile">Enhance your profile</a></li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>
+
 
 }

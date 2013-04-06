@@ -6,72 +6,78 @@
     Sign Up
 }
 
-        @main("signup") {
+@main("signup") {
 
-            @helper.form(action = routes.SignUp.submit) {
+    @helper.form(action = routes.SignUp.submit) {
 
-            <div class="row">
-                <div class="large-4 columns">
+    <div class="row">
+        <div class="large-4 columns">
 
-                    <fieldset>
-                        <legend>Your profile information</legend>
+            <fieldset>
+                <legend>New Users</legend>
 
-                        @inputText(signupForm("email"),
-                        '_label -> "Email",
-                        '_showConstraints -> false
-                        )
+                @inputText(signupForm("email"),
+                '_label -> "Email",
+                '_showConstraints -> false
+                )
 
-                        @inputText(signupForm("password"),
-                        '_label -> "Password",
-                        '_showConstraints -> false
-                        )
+                @inputPassword(signupForm("password"),
+                '_label -> "Password",
+                '_showConstraints -> false
+                )
 
-                        @inputText(signupForm("firstName"),
-                        '_label -> "First Name",
-                        '_showConstraints -> false
-                        )
+                @inputText(signupForm("firstName"),
+                '_label -> "First Name",
+                '_showConstraints -> false
+                )
 
-                        @inputText(signupForm("lastName"),
-                        '_label -> "Last Name",
-                        '_showConstraints -> false
-                        )
+                @inputText(signupForm("lastName"),
+                '_label -> "Last Name",
+                '_showConstraints -> false
+                )
 
-                        @select(signupForm("countryCode"),
-                        options = options(("US", "United States of America"), ("CA", "Canada")),
-                        '_label -> "Country",
-                        '_showConstraints -> false
-                        )
+                @select(signupForm("countryCode"),
+                options = options(("US", "United States of America"), ("CA", "Canada")),
+                '_label -> "Country",
+                '_showConstraints -> false
+                )
 
-                        @inputText(signupForm("postalCode"),
-                        '_label -> "Postal Code",
-                        '_showConstraints -> false
-                        )
+                @inputText(signupForm("postalCode"),
+                '_label -> "Postal Code",
+                '_showConstraints -> false
+                )
 
-                    </fieldset>
+            </fieldset>
 
-                    <fieldset>
+            <fieldset>
 
-                        @checkbox(
-                        signupForm("accept"),
-                        '_label -> None, '_text -> "You agree the Terms and conditions",
-                        '_showConstraints -> false
-                        )
+                @checkbox(
+                signupForm("accept"),
+                '_label -> None, '_text -> "You agree the Terms and conditions",
+                '_showConstraints -> false
+                )
 
-                        <div>
-                            <input type="submit" class="small button" value="Sign Up">
-                            <a href="@routes.Application.index" class="small button">Cancel</a>
-                        </div>
-
-                    </fieldset>
+                <div>
+                    <input type="submit" class="small button" value="Sign Up">
                 </div>
-                <div class="large-4 columns">
 
-                </div>
-                <div class="large-4 columns">
-                    <h4>Getting Started</h4>
-                    <p>We're stoked you want to try Chefworking! To find or post a kitchen job, fill in the signup form and we'll go from there.</p>
-                </div>
-            </div>
-            }
-        }
+            </fieldset>
+        </div>
+        <div class="large-4 columns">
+            <fieldset>
+                <legend>Existing Users</legend>
+
+                <ul class="side-nav">
+                    <li>Go to the <a href="/login">Login page</a></li>
+                </ul>
+
+            </fieldset>
+        </div>
+        <div class="large-4 columns">
+            <h4>Getting Started</h4>
+            <p>We're stoked you want to try Chefworking! To find or post a kitchen job, fill in the signup form and we'll go from there.</p>
+        </div>
+    </div>
+    }
+}
 

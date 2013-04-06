@@ -4,34 +4,35 @@ import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
 
-import views.html.signup.*;
+import views.html.login.*;
 
 import models.*;
-
-public class SignUp extends Controller {
+/**
+ * Created with IntelliJ IDEA.
+ * User: bjenkins
+ * Date: 4/5/13
+ * Time: 9:29 AM
+ * To change this template use File | Settings | File Templates.
+ */
+public class Login extends Controller {
 
     /**
      * Defines a form wrapping the User class.
      */
-    final static Form<User> signupForm = form(User.class);
+    final static Form<User> loginForm = form(User.class);
 
     /**
      * Display a blank form.
      */
     public static Result blank() {
-        return ok(form.render(signupForm));
+        return ok(form.render(loginForm));
     }
 
     /**
      * Handle the form submission.
      */
     public static Result submit() {
-        Form<User> filledForm = signupForm.bindFromRequest();
-
-        // Check accept conditions
-        if(!"true".equals(filledForm.field("accept").value())) {
-            filledForm.reject("accept", "You must accept the terms and conditions");
-        }
+        Form<User> filledForm = loginForm.bindFromRequest();
 
         if(filledForm.hasErrors()) {
             return badRequest(form.render(filledForm));
@@ -40,5 +41,4 @@ public class SignUp extends Controller {
             return ok(summary.render(created));
         }
     }
-
 }

@@ -9,6 +9,10 @@ GET     /                           controllers.Application.index()
 GET     /signup                     controllers.SignUp.blank()
 POST    /signup                     controllers.SignUp.submit()
 
+# Login pages
+GET     /login                      controllers.Login.blank()
+POST    /login                      controllers.Login.submit()
+
 # User pages
 GET     /users                      controllers.Application.users()
 POST    /users/:id/delete           controllers.Application.deleteUser(id: Long)

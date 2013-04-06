@@ -1,0 +1,51 @@
+@(loginForm: Form[User])
+
+@import helper._
+
+@title = {
+    Login
+}
+
+@main("login") {
+
+    @helper.form(action = routes.Login.submit) {
+
+    <div class="row">
+        <div class="large-4 columns">
+
+            <fieldset>
+                <legend>Log in</legend>
+
+                @inputText(loginForm("email"),
+                '_label -> "Email",
+                '_showConstraints -> false
+                )
+
+                @inputPassword(loginForm("password"),
+                '_label -> "Password",
+                '_showConstraints -> false
+                )
+
+                <div>
+                    <input type="submit" class="small button" value="Log In">
+                </div>
+
+            </fieldset>
+        </div>
+        <div class="large-4 columns">
+            <fieldset>
+                <legend>New Users</legend>
+
+                <ul class="side-nav">
+                    <li>Go to the <a href="/signup">Sign Up page</a></li>
+                </ul>
+
+            </fieldset>
+        </div>
+        <div class="large-4 columns">
+            <h4>Welcome Back!</h4>
+        </div>
+    </div>
+    }
+}
+
